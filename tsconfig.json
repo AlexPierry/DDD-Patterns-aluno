@@ -93,6 +93,15 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/domain/*/*.ts"
-  ]
+    "src/domain/*/*.ts",
+    "src/domain/checkout/entity/order_item.ts",
+    "src/domain/checkout/repository/order-repository-interface.ts",
+    "src/domain/checkout/service/order.service.spec.ts",
+    "src/domain/product/entity/product.spec.ts",
+    "src/domain/product/service/product.service.spec.ts",
+    "src/domain/product/repository/product-repository-interface.ts",
+    "src/domain/@shared/event/event-dispatcher.interface.ts",
+    "src/domain/@shared/repository/repository-interface.ts",
+    "src/domain/customer/repository/customer-repository-interface.ts"
+, "src/domain/customer/entity/address.ts"  ]
 }
