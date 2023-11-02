@@ -9,6 +9,8 @@ export default class Address {
         this._number = number;
         this._zipCode = zipCode;
         this._city = city;
+
+        this.validate();
     }
 
     get street(): string {
@@ -25,5 +27,43 @@ export default class Address {
 
     get city(): string {
         return this._city;
+    }
+
+    set street(value: string) {
+        this._street = value;
+        this.validate();
+    }
+
+    set number(value: number) {
+        this._number = value;
+        this.validate();
+    }
+
+    set zipCode(value: string) {
+        this._zipCode = value;
+        this.validate();
+    }
+
+    set city(value: string) {
+        this._city = value;
+        this.validate();
+    }
+
+    validate() {
+        if (this._street.length == 0) {
+            throw new Error("Street is required");
+        }
+
+        if (this._city.length == 0) {
+            throw new Error("City is required");
+        }
+
+        if (this._number < 0) {
+            throw new Error("Number must be positive");
+        }
+
+        if (this._zipCode.length == 0) {
+            throw new Error("Zipcode is required");
+        }
     }
 }
