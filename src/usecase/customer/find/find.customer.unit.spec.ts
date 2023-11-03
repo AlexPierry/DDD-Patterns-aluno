@@ -1,6 +1,3 @@
-import { Sequelize } from "sequelize-typescript";
-import CustomerModel from "../../../infra/customer/repository/sequelize/customer.model";
-import CustomerRepository from "../../../infra/customer/repository/sequelize/customer.repository";
 import Customer from "../../../domain/customer/entity/customer";
 import Address from "../../../domain/customer/entity/address";
 import FindCustomerUseCase from "./find.customer.usecase";
@@ -19,23 +16,6 @@ const MockRepository = () => {
 }
 
 describe("Unit test find customer use case", () => {
-    let sequelize: Sequelize;
-
-    beforeEach(async () => {
-        sequelize = new Sequelize({
-            dialect: "sqlite",
-            storage: ":memory:",
-            logging: false,
-            sync: { force: true },
-        });
-
-        await sequelize.addModels([CustomerModel]);
-        await sequelize.sync();
-    });
-
-    afterEach(async () => {
-        await sequelize.close();
-    });
 
     it("Should find a customer", async () => {
         const customerRepository = MockRepository();
