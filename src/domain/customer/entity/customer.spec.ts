@@ -5,19 +5,25 @@ describe("Customer unit test", () => {
     it("should throw error when id is empty", () => {
         expect(() => {
             let customer = new Customer("", "John")
-        }).toThrowError("Id is required");
+        }).toThrowError("customer: Id is required");
     });
 
     it("should throw error when name is empty", () => {
         expect(() => {
             let customer = new Customer("123", "")
-        }).toThrowError("Name is required");
+        }).toThrowError("customer: Name is required");
+    });
+
+    it("should throw error when id and name are empty", () => {
+        expect(() => {
+            let customer = new Customer("", "")
+        }).toThrowError("customer: Name is required,customer: Id is required");
     });
 
     it("should change name", () => {
         const customer = new Customer("123", "John");
         customer.changeName("Jane");
-        expect(customer.name).toBe("Jane");
+        expect(customer.name).toEqual("Jane");
     });
 
     it("should activate customer", () => {
@@ -25,13 +31,13 @@ describe("Customer unit test", () => {
         const address = new Address("Rua dos bobos", 0, "12345-123", "São Paulo");
         customer.address = address;
         customer.activate();
-        expect(customer.isActive).toBe(true);
+        expect(customer.isActive).toEqual(true);
     });
 
     it("should deactivate customer", () => {
         const customer = new Customer("123", "John");
         customer.deactivate();
-        expect(customer.isActive).toBe(false);
+        expect(customer.isActive).toEqual(false);
     });
 
     it("should throw error activating a customer when address is undefined", () => {
@@ -43,12 +49,12 @@ describe("Customer unit test", () => {
 
     it("Should add reward points", () => {
         const customer = new Customer("1", "Customer 1");
-        expect(customer.rewardPoints).toBe(0);
+        expect(customer.rewardPoints).toEqual(0);
 
         customer.addRewardPoints(10);
-        expect(customer.rewardPoints).toBe(10);
+        expect(customer.rewardPoints).toEqual(10);
 
         customer.addRewardPoints(10);
-        expect(customer.rewardPoints).toBe(20);
+        expect(customer.rewardPoints).toEqual(20);
     });
 });
